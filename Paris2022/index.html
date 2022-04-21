@@ -6,32 +6,43 @@
 
 		<title>Template Talk</title>
 
-		<meta name="description" content="A basic template to start a new talk">
+		<meta name="description" content="Accelerating Simulation-Based Inference with Differentiable Simulators">
 		<meta name="author" content="Justine Zeghal">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js/dist/theme/simple.css">
 
 		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-
 				<section data-markdown>
 				  <textarea data-template>
-						# Accelerating Simulation-Based Inference with Differentiable Simulators
+
+						### Accelerating Simulation-Based Inference with Differentiable Simulators
 
 						Justine Zeghal, François Lanusse, Alexandre Boucaud, Eric Aubourg
 
-						<!-- <table><tr>
-						<td> <img src=assets/APC.png alt="Drawing" style="width: 110px;"/> </td>
-						<td> <img src=assets/LogoDIIP.png alt="Drawing" style="width: 90px;"/> </td>
-						<td> <img src=assets/AIM.png alt="Drawing" style="width: 110px;"/> </td>
-						<td> <img src=assets/CosmoStat.png alt="Drawing" style="width: 280px;"/> </td>
-						</tr></table> -->
+
+						<img src=assets/APC.png alt="Drawing" style="width: 110px;"/>
+						<img src=assets/LogoDIIP.png alt="Drawing" style="width: 90px;"/>
+						<img src=assets/AIM.png alt="Drawing" style="width: 110px;"/>
+						<img src=assets/CosmoStat.png alt="Drawing" style="width: 280px;"/>
+
+						---
+
+						### Context
+
+
+						We want to infer the parameters that generated an observation $x_0$.
+
+						$\to$ **Bayes theorem**:
+						<span style='color:#996699'> $ p(\theta|x_0)$ </span>$  \propto$ <span style='color:#6699CC'> $ p(x_0|\theta)$</span> <span style='color:#669900'> $ p(\theta)$</span>
+
+
 
 				  </textarea>
 				</section>
@@ -39,10 +50,10 @@
 			</div>
 		</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
+		<script src="reveal.js/dist/reveal.js"></script>
+		<script src="reveal.js/plugin/notes/notes.js"></script>
+		<script src="reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="reveal.js/plugin/highlight/highlight.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
