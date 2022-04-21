@@ -36,13 +36,26 @@
 
 						### Context
 
-
 						We want to infer the parameters that generated an observation $x_0$.
 
 						$\to$ **Bayes theorem**:
 						<span style='color:#996699'> $ p(\theta|x_0)$ </span>$  \propto$ <span style='color:#6699CC'> $ p(x_0|\theta)$</span> <span style='color:#669900'> $ p(\theta)$</span>
 
+						Different ways to do Likelihood-Free Inference:
 
+						<center>
+						<img src="assets/sbi_dif_algo.png"
+						        alt="Picture"
+						        width="1000"
+						        height="800"
+						        style="display: block; margin: 0 auto" />
+    			</center>
+
+					$\to$ Require a large number of simulations.
+
+					<center>
+			    What if we add the gradients of joint log probability of the simulator with respect to input parameters in the LFI process?
+			    </center>
 
 				  </textarea>
 				</section>
@@ -54,6 +67,7 @@
 		<script src="reveal.js/plugin/notes/notes.js"></script>
 		<script src="reveal.js/plugin/markdown/markdown.js"></script>
 		<script src="reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="reveal.js/plugin/math/math.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -62,7 +76,7 @@
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
 			});
 		</script>
 	</body>
