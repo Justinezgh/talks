@@ -149,33 +149,52 @@
 				<section>
 					<section><h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Normalizing Flows (NFs) as Neural Density Estimators</p></h3>
 						<ul>
-							<p class="fragment">The key idea of NFs is to transform a 
+							<p class="fragment" data-fragment-index="0">The key idea of NFs is to transform a 
 								<span style='color:#E79E42'>simple density distribution $p_z(z)$</span> 
 								through a series of bijective functions $f_i$ to reconstruct a 
 								<span style='color:#be88ab'>complex target distribution $p_x(x)$</span>.</p>
 						</ul>
 						<div class="container">
-							<div class="col fragment fade-up">
+							<div class="col fragment fade-up" data-fragment-index="2">
 								<img data-src="assets/nf_1.png" style="width:210px;"></img>
 								<p style="position:absolute; top: 180px; left: 150px"> $z$</p>
-								<p style="position:absolute; top: 5px; left: 305px"> <font size="3">$f_1(z)$</font></p></p>
-								<p style="position:absolute; top: 20px; left: 280px"><font size="10"> $\longrightarrow$ </font></p>
 							</div>
 
-							<div class="col  fragment fade-up">
+							<div class="col  fragment fade-up" data-fragment-index="3">
 								<img data-src="assets/nf_2.png" style="width:210px;" ></img>
 								<p style="position:absolute; top: 180px; left: 150px"> $z'$</p>
-								<p style="position:absolute; top: 5px; left: 305px"> <font size="3">$f_2(z')$</font></p>
 								<p style="position:absolute; top: 20px; left: 280px"><font size="10"> $\longrightarrow$ </font></p>
-								<p style="position:absolute; top: 70px; left: -40px"><font size="10"> $\longleftarrow$ </font></p>
-								<p style="position:absolute; top: 125px; left: -25px"> <font size="3">$f^{-1}_1(z')$</font></p>
+								<p style="position:absolute; top: 5px; left: 305px"> <font size="3">
+									<div class="fragment grow" data-fragment-index='4' style="position:absolute; top: 5px; left: 305px">
+										<p>$f_2(z')$ </p>
+									</div>
+								</font></p>
+								
+								<p style="position:absolute; top: 70px; left: -50px"><font size="10"> $\longleftarrow$ </font></p>
+								<p style="position:absolute; top: 125px; left: -50px"> <font size="3">
+									<div class="fragment grow" data-fragment-index='4' style="position:absolute; top: 130px; left: -25px">
+										<p>$f^{-1}_1(z')$ </p>
+									</div>
+									</font></p>
+								
+								<p style="position:absolute; top: 20px; left: -50px"><font size="10"> $\longrightarrow$ </font></p>
+								<p style="position:absolute; top: 5px; left: -15px"> <font size="3">
+									<div class="fragment grow" data-fragment-index='4' style="position:absolute; top: 10px; left: -25px">
+										<p>$f_{1}(z) $ </p>
+									</div>
+									</font></p>
+
+								<p style="position:absolute; top: 70px; left: 280px"><font size="10"> $\longleftarrow$ </font></p>
+								<p style="position:absolute; top: 125px; left: 310px"> <font size="3">
+									<div class="fragment grow" data-fragment-index='4' style="position:absolute; top: 130px; left: 310px">
+										<p> $f_2^{-1}(x)$</p>
+									</div>
+								</font></p>
 							
 							</div>
 
-							<div class="col  fragment fade-up">
+							<div class="col  fragment fade-up" data-fragment-index="1">
 								<img data-src="assets/nf_3.png" style="width:210px;"></img>
-								<p style="position:absolute; top: 70px; left: -40px"><font size="10"> $\longleftarrow$ </font></p>
-								<p style="position:absolute; top: 125px; left: -25px"> <font size="3">$f^{-1}_2(x)$</font></p>
 								<p style="position:absolute; top: 180px; left: 150px"> $x$</p>
 							</div>
 						</div>
@@ -190,7 +209,7 @@
 					<section>
 						<div data-fragment-index="0">
 							<div class="fragment grow" data-fragment-index='5'>
-								<p>How to learn the true distributions $p(x)$ from data ? </p>
+								<p>How can we find the transformation parameter $\phi$ from the data $x$ to be as close as possible to the true distribution $p(x)$? </p>
 							</div>
 						<p class="fragment" data-fragment-index="1">
 							$\to$ we need a tool to compare distributions: <strong>the Kullback-Leiber Divergence </strong>.
@@ -201,7 +220,6 @@
 						<p class="fragment" data-fragment-index="3">
 							$$\begin{array}{ll}
 							D_{KL}(p(x)||p_x^{\phi}(x)) &= \mathbb{E}_{p(x)}\Big[ \log\left(\frac{p(x)}{p_x^{\phi}(x)}\right) \Big] \\
-							\\
 							&= \mathbb{E}_{p(x)}\left[ \log\left(p(x)\right) \right] - \mathbb{E}_{p(x)}\left[ \log\left(p_x^{\phi}(x)\right) \right]\\
 							\end{array}
 							$$
@@ -230,35 +248,35 @@
 									<span style='color:#669999'>gradients</span>: 
 								</p> 
 									<center> 
-										<p class="fragment">
+										<p class="fragment" data-fragment-index="0">
 											$\displaystyle \mathcal{L} = $
 											<span style='color:#7f7fd7'>$\displaystyle \ -\mathbb{E}[\log \: p_x^{\phi}(x)]$</span> 
 											$+\lambda \  
 											$<span style='color:#669999'>$ \displaystyle \mathbb{E}\left[ \parallel \nabla_{x} \log p_x(x)  - \underbrace{\nabla_x \log p_x^{\phi}(x)}\parallel_2^2 \right]$</span>
 										</p>
 									</center>
-								<p class="fragment">
+								<p class="fragment" data-fragment-index="1">
 									<strong>Problem</strong>: current $ C^{\infty}$ NFs such as those based on affine transformations lack expressivity to match the target distribution when taking their gradients:
 										$ \nabla_x f(x) = \nabla_x (ax+b) = a$.
 								</p>
 							</ul>
 							<div class="container">
-								<div class="col fragment fade-up">
+								<div class="col fragment fade-up" data-fragment-index="2">
 									<img data-src="assets/2moons_truth.png" style="width:230px;"></img>
 							
 								</div>
 		
-								<div class="col  fragment fade-up">
+								<div class="col  fragment fade-up" data-fragment-index="3">
 									<img data-src="assets/affineNF.png" style="width:230px;" ></img>
 								
 								</div>
 		
-								<div class="col  fragment fade-up">
+								<div class="col  fragment fade-up" data-fragment-index="4">
 									<img data-src="assets/smoothNF.png" style="width:230px;"></img>
 									
 								</div>
 							</div>
-							<p class="fragment col">
+							<p class="fragment col" data-fragment-index="4">
 								$$\to \: \: \: \: \scriptstyle
 								f = 
 								\left\{
@@ -330,13 +348,13 @@
 
 							<div class="col">
 								<ul>
-									<li class="fragment" data-fragment-index="1" > We tested our method with only simulations</li>
+									<li class="fragment" data-fragment-index="1" > We tested NPE (neural posterior estimation) with only simulations</li>
 									<br>
 									<li class="fragment"  data-fragment-index="2"> Then with simulations and scores</li>
 									<br>
-									<li class="fragment"  data-fragment-index="3"> We compared this to SCANDAL (proposed by <a href="https://arxiv.org/abs/1805.12244">Brehmer et al. 2019) </a>with simulations only</li>
+									<li class="fragment"  data-fragment-index="3"> We compared this to NLE  (neural likelihood estimation) with only simulations</li>
 									<br>
-									<li class="fragment"  data-fragment-index="4">And SCANDAL with simulations and scores</li>
+									<li class="fragment"  data-fragment-index="4">And to SCANDAL which is NLE with scores (proposed by <a href="https://arxiv.org/abs/1805.12244">Brehmer et al. 2019) </a></li>
 								</ul>
 							</div>
 						</div>
@@ -404,13 +422,13 @@
 
 							<div class="col">
 								<ul>
-									<li class="fragment" data-fragment-index="1" > We tested our method with only simulations</li>
+									<li class="fragment" data-fragment-index="1" > We tested NPE (neural posterior estimation) with only simulations</li>
 									<br>
 									<li class="fragment"  data-fragment-index="2"> Then with simulations and scores</li>
 									<br>
-									<li class="fragment"  data-fragment-index="3"> We compared this to SCANDAL (proposed by <a href="https://arxiv.org/abs/1805.12244">Brehmer et al. 2019) </a>with simulations only</li>
+									<li class="fragment"  data-fragment-index="3"> We compared this to NLE  (neural likelihood estimation) with only simulations</li>
 									<br>
-									<li class="fragment"  data-fragment-index="4">And SCANDAL with simulations and scores</li>
+									<li class="fragment"  data-fragment-index="4">And to SCANDAL which is NLE with scores (proposed by <a href="https://arxiv.org/abs/1805.12244">Brehmer et al. 2019) </a></li>
 								</ul>
 							</div>
 						</div>
@@ -511,7 +529,7 @@
 					<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Conclusion</p></h3>
 					<br><br>
 					<li class="fragment"  align="left">
-						Yes, the gradients help, but only if the prior is not too wide compared to the posterior. 
+						Yes, the gradients help to reduce the number of simulations, but only if the prior is not too wide compared to the posterior. 
 					</li>
 					<br>
 					<li class="fragment"  align="left">
@@ -525,9 +543,9 @@
 					</strong>
 				</p>
 				<li class="fragment"  align="left">
-					Develop an iterative method to efficiently integrate gradients. 
+					Develop an iterative method to efficiently integrate gradients and thus reduce the number of simulations. 
 				</li>
-				<br><br><br><br>
+				<br><br><br>
 				<p class="fragment">
 					Thank you !
 				</p>
