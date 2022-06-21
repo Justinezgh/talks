@@ -1,3 +1,6 @@
 [submodule "Paris2022/reveal.js"]
 	path = Paris2022/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "BDL2022/reveal.js"]
+	path = BDL2022/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
