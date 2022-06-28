@@ -4,3 +4,6 @@
 [submodule "BDL2022/reveal.js"]
 	path = BDL2022/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "diip2022/reveal.js"]
+	path = diip2022/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
