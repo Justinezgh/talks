@@ -7,3 +7,6 @@
 [submodule "diip2022/reveal.js"]
 	path = diip2022/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "icml2022/reveal.js"]
+	path = icml2022/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
