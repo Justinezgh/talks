@@ -55,11 +55,11 @@
 								<span style='color:#6699CC'> $ \underbrace{p(x_0|\theta)}_{\text{likelihood}}$</span>
 								<span style='color:#669900'> $ \underbrace{p(\theta)}_{\text{prior}}$</span>
 							</p>
-							<p class="fragment"data-fragment-index="3">
+							<!-- <p class="fragment"data-fragment-index="3">
 								<span style='color:#6699CC;position:absolute; left: 350px;'> $ p(x_0|\theta) = \int p(x_0|\theta, z)p(z)dz$</span>
 								<span style='position:absolute; left: 740px;'>$\to$ intractable </span>
-							</p>
-							<br><br>
+							</p> -->
+							
 							<p  class='fragment' data-fragment-index="4">Different ways to do Likelihood-Free Inference:</p>
 							<br>
 							<div>
@@ -85,8 +85,8 @@
 								<p class="fragment" data-fragment-index="8"> $\to$ Require a large number of simulations</p>
 							</ul>
 						</ul>
-						<p class="fragment" data-fragment-index="9"> <strong>What if we add the gradients of joint log probability of the simulator with
-							respect to input parameters in the LFI process ?</strong>
+						<p class="fragment" data-fragment-index="9"> <strong>Following an idea from <a href="https://arxiv.org/abs/1805.12244">Brehmer et al. 2019 </a> we add the gradients of joint log probability of the simulator with
+							respect to input parameters in the LFI process. </strong>
 						</p>
 				</section>
 
@@ -142,7 +142,7 @@
 					</div>
 					<div>
 						<p class="fragment">$\to$ We integrate the gradients $\nabla_{\theta} \log p(\theta|x)$ in the process to reduce the number of simulations.</p>
-						<p class="fragment">How can we train our neural density estimator with both simulations and score ?</p>
+						<p class="fragment">How can we train our neural density estimator with both simulations and gradients ?</p>
 					</div>
 				</section>
 
@@ -191,12 +191,14 @@
 
 							<div class="col  fragment fade-up"  style="position:absolute;top:420px;left:680px" >
 								<img data-src="assets/smoothNF.png" style="width:230px;"></img>
+								<span style="position:absolute;top:230px;left:0px">  <font size="2">
+									<a href="https://arxiv.org/abs/2110.00351">Smooth Normalizing Flows paper here</a></font>  </span>
 
 							</div>
 
 						</div>
-						<span class="fragment" style="position:absolute;top:660px;left:685px">  <font size="2">
-							<a href="https://arxiv.org/abs/2110.00351">Smooth Normalizing Flows paper here</a></font>  </span>
+						<!-- <span class="fragment" style="position:absolute;top:660px;left:685px">  <font size="2">
+							<a href="https://arxiv.org/abs/2110.00351">Smooth Normalizing Flows paper here</a></font>  </span> -->
 						
 						<!-- <ul>
 							<p class="fragment" data-fragment-index="0">The key idea of NFs is to transform a
@@ -384,17 +386,37 @@
 				</section> -->
 
 				<section>
-					<section>
+					
 						<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Results for Lotka Volterra </p></h3>
-						<p class = 'fragment'  data-fragment-index="0" style="position:absolute;top:0px;left:600px;">
+						<div class = 'fragment'  data-fragment-index="0" style="position:absolute;top:20px;left:600px;">
 							 $ \underbrace{p(\theta|x_0)}_{\text{posterior}}  \propto$
 							 $ \underbrace{p(x_0|\theta)}_{\text{likelihood}}$
 							 $ \underbrace{p(\theta)}_{\text{prior}}$
+						</div>
+						<div class = 'fragment'  data-fragment-index="1" style="position:absolute;top:20px;left:600px;color:#c26d27">
+							$ \underbrace{p(\theta|x_0)}_{\text{posterior}}$	
+						</div>
+					   <div class = 'fragment'  data-fragment-index="3" style="position:absolute;top:20px;left:600px;">
+						$ \underbrace{p(\theta|x_0)}_{\text{posterior}}  \propto$
+							<span style ='color:#2789c2'>
+							$\underbrace{p(x_0|\theta)}_{\text{likelihood}}$
+							</span> 
+						
+						
+						
+						</div>
+						<!-- class="fragment fade-in-then-out" data-fragment-index="2" -->
+						<p class="fragment fade-in-then-out" data-fragment-index="2" style="position:absolute;top:100px;left:0px;">
+							Our method
 						</p>
+						<p class="fragment fade-in-then-out" data-fragment-index="4" style="position:absolute;top:100px;left:0px;">
+							SCANDAL method from  <a href="https://arxiv.org/abs/1805.12244">Brehmer et al. 2019 </a>
+						</p>
+
 						<div class="container">
 							<div class="col">
 
-								<div style="position:absolute;top:200px;  width:450px; height:450px; margin:0 auto;">
+								<div style="position:absolute;top:250px;  width:400px; height:400px; margin:0 auto;">
 									<div class = 'fragment'  data-fragment-index="1" style="position:absolute;top:-30px;left:0px; width:450px; height:450px; margin:0 auto;">
 										Wide proposal distribution
 									</div>
@@ -406,7 +428,7 @@
 								</div>
 							</div>
 							<div class="col">
-								<div style="position:absolute;top:200px; width:450px; height:450px; margin:0 auto;">
+								<div style="position:absolute;top:250px; width:400px; height:400px; margin:0 auto;">
 									<div class = 'fragment'  data-fragment-index="1" style="position:absolute;top:-30px;left:0px; width:450px; height:450px; margin:0 auto;">
 										Narrow proposal distribution
 									</div>
@@ -422,7 +444,7 @@
 							And found out that the gradients help a lot in the case of a narrow proposal distribution.
 						</p>
 
-					</section>
+					
 					<!-- <section>
 						<h3>Prior analysis: wide prior</h3>
 						<div class="container">
@@ -508,105 +530,14 @@
 							</div>
 						</div>
 					</section> -->
-
-					<section>
-
-						<div class="container">
-							<div class="col">
-								<p style="position:absolute;top:500px;left:100px;">With simulations only</p>
-								<div class="block-content">
-									<div class="plain fragment current-visible " style="position:absolute;top:0;left:-70px;width:600px;" data-fragment-index="0">
-
-										<img data-src='assets/truth_vs_pred_without_score_20.png' style="height:450px;" />
-
-									</div>
-
-									<div class="plain fragment current-visible " style="position:absolute;top:0;left:-70px;width:600px;" data-fragment-index="1">
-
-										<img data-src='assets/truth_vs_pred_without_score_50.png' style="height:450px;" />
-									</div>
-
-									<div class="plain fragment current-visible " style="position:absolute;top:0;left:-70px;width:600px;" data-fragment-index="2">
-
-										<img data-src='assets/truth_vs_pred_without_score_100.png' style="height:450px;" />
-									</div>
-
-									<div class="plain fragment current-visible " style="position:absolute;top:0;left:-70px;width:600px;" data-fragment-index="3">
-
-										<img data-src='assets/truth_vs_pred_without_score_200.png' style="height:450px;" />
-									</div>
-
-									<div class="plain fragment current-visible " style="position:absolute;top:0;left:-70px;width:600px;" data-fragment-index="4">
-
-										<img data-src='assets/truth_vs_pred_without_score_500.png' style="height:450px;" />
-									</div>
-
-									<div class="plain fragment current-visible " style="position:absolute;top:0;left:-70px;width:600px;" data-fragment-index="5">
-
-										<img data-src='assets/truth_vs_pred_without_score_1000.png' style="height:450px;" />
-									</div>
-
-									<div class="plain fragment " style="position:absolute;top:0;left:-70px;width:600px;" data-fragment-index="6">
-
-										<img data-src='assets/truth_vs_pred_without_score_10000.png' style="height:450px;" />
-									</div>
-								</div>
-							</div>
-
-							<div class="col">
-								<p style="position:absolute;top:500px;left:600px;">With simulations and score</p>
-								<div class="block-content">
-									<div style="position:relative; height:570px; top:0px; left:-40px;">
-										<div class="plain fragment current-visible " style="position:absolute;top:0;left:10;width:600px;" data-fragment-index="0">
-
-											<img data-src='assets/truth_vs_pred_with_score_20.png' style="height:450px;" />
-										</div>
-
-										<div class="plain fragment current-visible " style="position:absolute;top:0;left:10;width:600px;" data-fragment-index="1">
-
-											<img data-src='assets/truth_vs_pred_with_score_50.png' style="height:450px;" />
-										</div>
-
-										<div class="plain fragment current-visible " style="position:absolute;top:0;left:10;width:600px;" data-fragment-index="2">
-
-											<img data-src='assets/truth_vs_pred_with_score_100.png' style="height:450px;" />
-										</div>
-
-										<div class="plain fragment current-visible " style="position:absolute;top:0;left:10;width:600px;" data-fragment-index="3">
-
-											<img data-src='assets/truth_vs_pred_with_score_200.png' style="height:450px;" />
-										</div>
-
-										<div class="plain fragment current-visible " style="position:absolute;top:0;left:10;width:600px;" data-fragment-index="4">
-
-											<img data-src='assets/truth_vs_pred_with_score_500.png' style="height:450px;" />
-										</div>
-
-										<div class="plain fragment current-visible " style="position:absolute;top:0;left:10;width:600px;" data-fragment-index="5">
-
-											<img data-src='assets/truth_vs_pred_with_score_1000.png' style="height:450px;" />
-										</div>
-
-										<div class="plain fragment " style="position:absolute;top:0;left:10;width:600px;" data-fragment-index="6">
-
-											<img data-src='assets/truth_vs_pred_with_score_10000.png' style="height:450px;" />
-										</div>
-
-
-									</div>
-								</div>
-							</div>
-
-						</div>
-
-					</section>
+ 
 				</section>
 
 
 				<section>
 					<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Conclusion</p></h3>
 					<br><br>
-					<li class="fragment" >
+					<li class="fragment grow" >
 						<!-- Yes, the gradients help to reduce the number of simulations, but only if the prior is not too wide compared to the posterior.  -->
 						This is the first NPE method that uses the score.
 					</li>
