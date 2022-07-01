@@ -75,7 +75,7 @@
 									<div class="fragment " data-fragment-index="7" style="position:absolute;">
 										<li>Posterior Estimation</li>
 									</div>
-									<div class="fragment " data-fragment-index="10" style="position:absolute;">
+									<div class="fragment " data-fragment-index="9" style="position:absolute;">
 										<li style="color:#FF8F00";>Posterior Estimation</li>
 									</div>
 								</div>
@@ -85,7 +85,7 @@
 								<p class="fragment" data-fragment-index="8"> $\to$ Require a large number of simulations</p>
 							</ul>
 						</ul>
-						<p class="fragment" data-fragment-index="9"> <strong>Following an idea from <a href="https://arxiv.org/abs/1805.12244">Brehmer et al. 2019 </a> we add the gradients of joint log probability of the simulator with
+						<p class="fragment" data-fragment-index="10"> <strong>Following an idea from <a href="https://arxiv.org/abs/1805.12244">Brehmer et al. 2019 </a> we add the gradients of joint log probability of the simulator with
 							respect to input parameters in the LFI process. </strong>
 						</p>
 				</section>
@@ -141,7 +141,7 @@
 						</div>
 					</div>
 					<div>
-						<p class="fragment">$\to$ We integrate the gradients $\nabla_{\theta} \log p(\theta|x)$ in the process to reduce the number of simulations.</p>
+						<p class="fragment">$\to$ We integrate the gradients $\nabla_{\theta} \log p(\theta|x)$ (also known as the score) in the process to reduce the number of simulations.</p>
 						<p class="fragment">How can we train our neural density estimator with both simulations and gradients ?</p>
 					</div>
 				</section>
