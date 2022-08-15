@@ -10,3 +10,9 @@
 [submodule "icml2022/reveal.js"]
 	path = icml2022/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "comite_these2022/reveal.js"]
+	path = comite_these2022/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
+[submodule "SummerSchool2022/reveal.js"]
+	path = SummerSchool2022/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
