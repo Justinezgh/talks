@@ -248,15 +248,17 @@
 			<section>
 				<section>
 					<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >The idea</p></h3>
-						<video data-autoplay src="assets/Simulateur-2.mp4" style="width:1000px;"></video>
-				</section>
+						<!-- <video data-autoplay src="assets/Simulateur-2.mp4" style="width:1000px;"></video> -->
+						<iframe src="assets/Simulateur-2.mp4" width="800px" height="450" frameborder="0"></iframe>
+					</section>
 			
 
 
 				<section>
 
 					<div >
-						<video data-autoplay src="assets/score_explanation.mp4" style="width:600px;"></video>
+						<iframe src="assets/score_explanation.mp4" width="800px" height="450" frameborder="0"></iframe>
+						<!-- <video data-autoplay src="assets/score_explanation.mp4" style="width:600px;"></video> -->
 					
 					</div>
 						
@@ -332,7 +334,8 @@
 						</p> -->
 						<br>
 						<div class="fragment">
-							<video data-autoplay src="assets/NF_explanation.mp4" style="width:1500px;"></video>
+							<iframe src="assets/NF_explanation.mp4" width="800px" height="450" frameborder="0"></iframe>
+							<!-- <video data-autoplay src="assets/NF_explanation.mp4" style="width:1500px;"></video> -->
 						</div>
 						
 					</section>
@@ -346,9 +349,10 @@
 						<p class="fragment" data-fragment-index="1">
 							$\to$ we need a tool to compare distributions: <strong>the Kullback-Leiber Divergence</strong>.
 						</p>
-						<div class="fragment" data-fragment-index="2">
-
-							<video data-autoplay src="assets/dkl_2.mp4" style="width:400px;"></video>
+						<div class="fragment" data-fragment-index="2" size="1">
+							<iframe src="assets/dkl_2.mp4"   width="900px" height="250" ></iframe>
+							
+							<!-- <video data-autoplay src="assets/dkl_2.mp4" style="width:400px;"></video> -->
 
 							
 						</div>
@@ -466,6 +470,39 @@
 				<section>
 					<section>
 						<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Results</p></h3>
+						<div class="container">
+							<div class="col">
+								<div style="position:relative; width:550px; height:550px; margin:0 auto;">
+											<img class="fragment current-visible plain" data-src="assets/tight_prior_lotkavolterra_c2st_1.png" style="position:absolute;top:0;left:0;" data-fragment-index="1" />
+											<img class="fragment current-visible plain" data-src="assets/tight_prior_lotkavolterra_c2st_2.png" style="position:absolute;top:0;left:0;" data-fragment-index="2" />
+											<!-- <img class="fragment current-visible plain" data-src="assets/tight_prior_lotkavolterra_c2st_3.png" style="position:absolute;top:0;left:0;" data-fragment-index="3" />
+											<img class="fragment" data-src="assets/tight_prior_lotkavolterra_c2st_4.png" style="position:absolute;top:0;left:0;" data-fragment-index="4" /> -->
+
+								</div>
+							</div>
+
+							<div class="col">
+								<!-- <p style="position:absolute;top:50px;left:600px;">
+									 $ \underbrace{p(\theta|x_0)}_{\text{posterior}}  \propto$
+									 $ \underbrace{p(x_0|\theta)}_{\text{likelihood}}$
+									 $ \underbrace{p(\theta)}_{\text{prior}}$
+								</p> -->
+								<ul>
+									<li class="fragment" data-fragment-index="1" >
+
+										We tested with only simulations</li>
+
+									<br>
+									<li class="fragment"  data-fragment-index="2">
+
+										Then with simulations and scores</li>
+									
+								</ul>
+							</div>
+						</div>
+					</section>
+					<!-- <section>
+						<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Results</p></h3>
 						<br>
 						<div class="container">
 							<div class="col">
@@ -489,8 +526,8 @@
 							</div>
 						</div>
 
-					</section>
-					<section>
+					</section> -->
+					<!-- <section>
 						<h3 class='slide-title' align="left"><p>Wide proposal distribution</p></h3>
 						<div class="container">
 
@@ -507,9 +544,6 @@
 
 							<div class="col">
 								<p style="position:absolute;top:50px;left:600px;">
-									<!-- <span style='color:#c26b02'> $ \underbrace{p(\theta|x_0)}_{\text{posterior}}$</span>$  \propto$
-									<span style='color:#6699CC'> $ \underbrace{p(x_0|\theta)}_{\text{likelihood}}$</span>
-									<span style='color:#669900'> $ \underbrace{p(\theta)}_{\text{prior}}$</span> -->
 									 $ \underbrace{p(\theta|x_0)}_{\text{posterior}}  \propto$
 									 $ \underbrace{p(x_0|\theta)}_{\text{likelihood}}$
 									 $ \underbrace{p(\theta)}_{\text{prior}}$
@@ -533,11 +567,10 @@
 								</ul>
 							</div>
 						</div>
-						<p class='fragment'>And found out that whether with our method or SCANDAL the gradients do not help.</p>
+						<p class='fragment'>And found out that whether with our method or SCANDAL the gradients do not help.</p> -->
 
-					</section>
+					<!-- </section>
 					<section>
-						<!-- <h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Results</p></h3> -->
 						<br><br>
 						<div class="container">
 							<div class="col">
@@ -545,7 +578,6 @@
 								<p  style="position:absolute;top:500px;left:100px;">Wide proposal distribution</p>
 								
 								<div style="position:relative; width:450px; height:450px; margin:0 auto;">
-											<!-- <img class="fragment current-visible plain" data-src="assets/wide_prior_lotkavolterra.png" style="position:absolute;top:0;left:0;" data-fragment-index="1" /> -->
 											<img  data-src="assets/wide_prior_posterior_lotkavolterra.png" style="position:absolute;top:0;left:0;"  />
 
 								</div>
@@ -554,62 +586,15 @@
 							<div class="col">
 								<p class="fragment grow" data-fragment-index='3' style="position:absolute;top:500px;left:600px;">Tight proposal distribution</p>
 								<div style="position:relative; width:450px; height:450px; margin:0 auto;">
-											<!-- <img class="fragment current-visible plain" data-src="assets/tight_prior_lotkavolterra.png" style="position:absolute;top:0;left:0;" data-fragment-index="1" /> -->
 											<img data-src="assets/tight_prior_posterior_lotkavolterra.png" style="position:absolute;top:0;left:0;"  />
 
 								</div>
 							</div>
 						</div>
 
-					</section>
-					<!-- <section>
-						<h3>Prior analysis: wide prior</h3>
-						<div class="container">
-							<div class="col">
-								<div style="position:relative; width:550px; height:550px; margin:0 auto;">
-											<img class="fragment current-visible plain" data-src="assets/wide_prior_lotkavolterra.png" style="position:absolute;top:0;left:0;" data-fragment-index="1" />
-											<img class="fragment " data-src="assets/wide_prior_posterior_lotkavolterra.png" style="position:absolute;top:0;left:0;" data-fragment-index="2" />
-
-								</div>
-							</div>
-
-							<div class="col">
-								<ul>
-									<p class="fragment" data-fragment-index="1" > The prior we used in our experiment.</p>
-									<br>
-									<p class="fragment"  data-fragment-index="2"> The true posterior.</p>
-									<br>
-									<p class="fragment"  data-fragment-index="3"> The posterior is very small compare to the prior.</p>
-								</ul>
-							</div>
-						</div>
-
 					</section> -->
 
 					<!-- <section>
-						<h3>Prior analysis: tight prior</h3>
-						<div class="container">
-							<div class="col">
-								<div style="position:relative; width:550px; height:550px; margin:0 auto;">
-											<img class="fragment current-visible plain" data-src="assets/tight_prior_lotkavolterra.png" style="position:absolute;top:0;left:0;" data-fragment-index="1" />
-											<img class="fragment " data-src="assets/tight_prior_posterior_lotkavolterra.png" style="position:absolute;top:0;left:0;" data-fragment-index="2" />
-
-								</div>
-							</div>
-
-							<div class="col">
-								<ul>
-									<p class="fragment" data-fragment-index="1" > The prior.</p>
-									<br>
-									<p class="fragment"  data-fragment-index="2"> The true posterior.</p>
-									<br>
-									<p class="fragment"  data-fragment-index="3"> And we performed the same experiment in this framework.</p>
-								</ul>
-							</div>
-						</div>
-					</section> -->
-
-					<section>
 						<h3 class='slide-title' align="left"><p>Tight proposal distribution</p></h3>
 						<div class="container">
 							<div class="col">
@@ -624,9 +609,6 @@
 
 							<div class="col">
 								<p style="position:absolute;top:50px;left:600px;">
-									<!-- <span style='color:#c26b02'> $ \underbrace{p(\theta|x_0)}_{\text{posterior}}$</span>$  \propto$
-									<span style='color:#6699CC'> $ \underbrace{p(x_0|\theta)}_{\text{likelihood}}$</span>
-									<span style='color:#669900'> $ \underbrace{p(\theta)}_{\text{prior}}$</span> -->
 									 $ \underbrace{p(\theta|x_0)}_{\text{posterior}}  \propto$
 									 $ \underbrace{p(x_0|\theta)}_{\text{likelihood}}$
 									 $ \underbrace{p(\theta)}_{\text{prior}}$
@@ -650,7 +632,7 @@
 								</ul>
 							</div>
 						</div>
-					</section>
+					</section> -->
 
 					<section>
 
