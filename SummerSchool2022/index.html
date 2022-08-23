@@ -50,53 +50,52 @@
 							<!-- etant donne des simulations -->
 
 							<p class='fragment' data-fragment-index="1"  style="position:absolute;top:100px; left:0px">
-								Given a simulation $x_0$
+								We want to infer the parameters $\theta$ that generated an observation $x_0$
+								<!-- Given a simulation $x_0$ -->
 						   </p>
 
-							<p class='fragment' data-fragment-index="2"  style="position:absolute;top:100px; left:240px">
+							<!-- <p class='fragment' data-fragment-index="2"  style="position:absolute;top:100px; left:240px">
 								, the likelihood,
-								<!-- 'l'information que ce x donne sur theta  -->
 								
-							</p>
+							</p> -->
 
-							<p class='fragment' data-fragment-index="3"  style="position:absolute;top:100px; left:420px">
+							<!-- <p class='fragment' data-fragment-index="3"  style="position:absolute;top:100px; left:420px">
 								and previous information about $\theta$
-								<!-- <p class='fragment' data-fragment-index="3" style="position:absolute;top:140px; left:0px">
+								<p class='fragment' data-fragment-index="3" style="position:absolute;top:140px; left:0px">
 									 parameters and the "simulations" $x$
-								</p> -->
-						   </p>
-
+								</p>
+						   </p> -->
+<!-- 
 							<p class='fragment' data-fragment-index="4"  style="position:absolute;top:100px; left:790px">
 								, we want  
 								<p class='fragment' data-fragment-index="4" style="position:absolute;top:140px; left:0px">
 									to infer the parameters that generated an observation $x_0$. 
-									<!--  on peut avoir la proba du parametre theta sachant qu'on a regarde l'observation x -->
-							   </p>
-							</p>
+									</p>
+							</p> -->
 
-							<p  class='fragment' data-fragment-index="1" style="position:absolute;top:350px; left:510px"> 
+							<!-- <p  class='fragment' data-fragment-index="1" style="position:absolute;top:350px; left:510px"> 
 								<span style='color:#6699CC'> $x_0$</span>
+							</p> -->
+
+							<p  class='fragment' data-fragment-index="4" style="position:absolute;top:350px; left:480px"> 
+								<span style='color:#6699CC'> $ \underbrace{p(x_0|\theta)}_{\text{likelihood}}$</span>
 							</p>
 
-							<p  class='fragment' data-fragment-index="2" style="position:absolute;top:350px; left:480px"> 
-								<span style='color:#6699CC'> $ \underbrace{p(\: \: \: \: \:|\theta)}_{\text{likelihood}}$</span>
-							</p>
-
-							<p  class='fragment' data-fragment-index="3"  style="position:absolute;top:350px; left:600px">
+							<p  class='fragment' data-fragment-index="5"  style="position:absolute;top:350px; left:600px">
 								  <span style='color:#669900'> $ \underbrace{p(\theta)}_{\text{prior}}$</span>
 							</p>
 
 
-							<p  class='fragment' data-fragment-index="4" style="position:absolute;top:350px; left:300px"> 
+							<p  class='fragment' data-fragment-index="1" style="position:absolute;top:350px; left:300px"> 
 								<span style='color:#996699'> $ \underbrace{p(\theta|x_0)}_{\text{posterior}}$</span>
 							</p>
 
 
-							<p  class='fragment' data-fragment-index="5" style="position:absolute;top:350px; left:420px"> 
+							<p  class='fragment' data-fragment-index="2" style="position:absolute;top:350px; left:420px"> 
 								$\propto$
 							</p>
 							
-							<p  class='fragment' data-fragment-index="5" style="position:absolute;top:280px; left:100px"> 
+							<p  class='fragment' data-fragment-index="2" style="position:absolute;top:280px; left:100px"> 
 								$\to$ Bayes theorem: 
 							</p>
 
@@ -141,7 +140,7 @@
 							<div class="col  fragment fade-up" style="position:absolute;top:330px;left:410px" data-fragment-index="6">
 								<div class="col  fragment fade-out" data-fragment-index="16">
 								<img data-src="assets/correlation_function.png" style="width:210px;" ></img>
-								<p style="position:absolute;top:140px; left:10px"><font size="4">two points correlation function</p></font>
+								<p style="position:absolute;top:140px; left:10px"><font size="4">two-point correlation function</p></font>
 							</div>
 						</div>
 
@@ -257,7 +256,7 @@
 				<section>
 					<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >The idea</p></h3>
 						<!-- <video data-autoplay src="assets/Simulateur-2.mp4" style="width:1000px;"></video> -->
-						<iframe src="assets/Simulateur-2.mp4" width="800px" height="450" frameborder="0"></iframe>
+						<iframe src="assets/Simulateur-2.mp4" allow="autoplay" width="800px" height="450" frameborder="0"></iframe>
 					</section>
 			
 
@@ -265,7 +264,7 @@
 				<section>
 
 					<div >
-						<iframe src="assets/score_explanation.mp4" width="800px" height="450" frameborder="0"></iframe>
+						<iframe src="assets/score_explanation.mp4"  allow="autoplay" width="800px" height="450" frameborder="0"></iframe>
 						<!-- <video data-autoplay src="assets/score_explanation.mp4" style="width:600px;"></video> -->
 					
 					</div>
@@ -342,7 +341,7 @@
 						</p> -->
 						<br>
 						<div class="fragment">
-							<iframe src="assets/NF_explanation.mp4" width="800px" height="450" frameborder="0"></iframe>
+							<iframe src="assets/NF_explanation.mp4" allow="autoplay" width="800px" height="450" frameborder="0"></iframe>
 							<!-- <video data-autoplay src="assets/NF_explanation.mp4" style="width:1500px;"></video> -->
 						</div>
 						
@@ -358,7 +357,7 @@
 							$\to$ we need a tool to compare distributions: <strong>the Kullback-Leiber Divergence</strong>.
 						</p>
 						<div class="fragment" data-fragment-index="2" size="1">
-							<iframe src="assets/dkl_2.mp4"   width="900px" height="250" ></iframe>
+							<iframe src="assets/dkl_2.mp4"   allow="autoplay" width="900px" height="250" ></iframe>
 							
 							<!-- <video data-autoplay src="assets/dkl_2.mp4" style="width:400px;"></video> -->
 
