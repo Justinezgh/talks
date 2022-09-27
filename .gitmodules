@@ -16,3 +16,6 @@
 [submodule "SummerSchool2022/reveal.js"]
 	path = SummerSchool2022/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "in2p3_irfu_workshop/reveal.js"]
+	path = in2p3_irfu_workshop/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
