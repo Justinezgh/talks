@@ -1,0 +1,343 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Accelerating Simulation-Based Inference with Differentiable Simulators</title>
+
+		<meta name="description" content="Accelerating Simulation-Based Inference with Differentiable Simulators">
+		<meta name="author" content="Justine Zeghal">
+
+		<link rel="stylesheet" href="reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js/dist/theme/darkenergy.css" id="theme">
+		<link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+						  <p class="container">
+						   <div class="title" style="border-radius: 20px; background-color:rgba(42, 43, 45, 0.412);" >
+							<br>
+							<h2 >Accelerating Cosmological <br> Simulation-Based Inference
+							 with <br> Differentiable Simulators</h2>
+							
+							<center><hr size="100" width="300"></center>
+							<h3><p style="color:#5D6D7E";>diiP Workshop Day</p></h3>
+							<h4><p style="color:#34495E";>December 7th, 2022</p></h4>
+						   </div>
+						</p>
+					   <br>
+					   <p>Justine Zeghal, Eric Aubourg, Alexandre Boucaud, François Lanusse</p>
+					   <br>
+					   <img src=assets/APC.png alt="Drawing" style="width: 110px;"/>
+					   <img src=assets/AstroDeep_white.png alt="Drawing" style="width: 180px;"/>
+					   <img src=assets/LogoDIIP.png alt="Drawing" style="width: 90px;"/>
+				</section>
+
+				<section>
+					<h3 class='slide-title' align="left"><p style="color:#5D6D7E";>Bayes theorem</p></h3>
+					<ul>
+						<!-- etant donne des simulations -->
+
+						<p class='fragment' data-fragment-index="1"  style="position:absolute;top:100px; left:0px">
+							We want to infer the parameters $\theta$ that generated an observation $x_0$.
+					   </p>
+
+						<p  class='fragment' data-fragment-index="4" style="position:absolute;top:300px; left:480px"> 
+							<span style='color:#6699CC'> $ \underbrace{p(x_0|\theta)}_{\text{likelihood}}$</span>
+						</p>
+
+						<p  class='fragment' data-fragment-index="5"  style="position:absolute;top:300px; left:600px">
+							  <span style='color:#669900'> $ \underbrace{p(\theta)}_{\text{prior}}$</span>
+						</p>
+
+
+						<p  class='fragment' data-fragment-index="1" style="position:absolute;top:300px; left:300px"> 
+							<span style='color:#996699'> $ \underbrace{p(\theta|x_0)}_{\text{posterior}}$</span>
+						</p>
+
+
+						<p  class='fragment' data-fragment-index="2" style="position:absolute;top:300px; left:420px"> 
+							$\propto$
+						</p>
+						
+						<p  class='fragment' data-fragment-index="2" style="position:absolute;top:220px; left:100px"> 
+							$\to$ Bayes theorem: 
+						</p>
+
+						<!-- <p  class='fragment' data-fragment-index="6" style="position:absolute;top:405px; left:470px"> 
+							<span > ///////////</span>
+						</p> -->
+						<p  class='fragment' data-fragment-index="6" style="position:absolute;top:400px; left:480px"> 
+							<span style='color:#6699CC'> $p(x_0|\theta)=\int p(x_0|\theta,z)p(z)dz$</span>
+						</p>
+
+						<p  class='fragment' data-fragment-index="7" style="position:absolute;top:530px; left:100px"> 
+							<span > Solution: Simulation-Based Inference (SBI) / Likelihood-Free Inference (LFI)</span>
+						</p>
+
+				</section>
+
+				<section>
+					<h3 class='slide-title' align="left"><p style="color:#5D6D7E";>Example</p></h3>
+					
+					<div class="container">
+						<div class = "fragment" style="position:absolute;top:200px; left:0px" data-fragment-index="3">
+							<div class = "fragment fade-out" data-fragment-index="9">
+							Classical method:
+							</div>
+							
+						</div>
+						<div class = "fragment" style="position:absolute;top:200px; left:0px" data-fragment-index="10">
+							SBI method:
+						</div>
+						<div class="col fragment fade-up" style="position:absolute;top:310px; left:30px" data-fragment-index="4">
+							<img data-src="assets/shear_map.png" style="width:280px;"></img>
+							<p style="position:absolute;top:160px; left:100px">
+								<font size="4">shear map</font>
+							</p>
+						</div>
+
+						<div class="col  fragment fade-up" style="position:absolute;top:420px;left:320px;color:#98b0c9" data-fragment-index="5">
+							<div class="col  fragment fade-out" data-fragment-index="16">
+							$\longrightarrow$
+							<p style="position:absolute;top:-60px;left:-30px"><font size="4">compression</font></p>
+						</div>
+						</div>
+						<div class="col  fragment fade-up" style="position:absolute;top:330px;left:410px" data-fragment-index="6">
+							<div class="col  fragment fade-out" data-fragment-index="16">
+							<img data-src="assets/correlation_function.png" style="width:210px;" ></img>
+							<p style="position:absolute;top:140px; left:10px"><font size="4">two-point correlation function</p></font>
+						</div>
+					</div>
+
+						<div class="col  fragment fade-up" style="position:absolute;top:420px;left:670px;color:#98b0c9" data-fragment-index="7">
+							<div class="col  fragment fade-out" data-fragment-index="16">
+							$\longrightarrow$
+							<p style="position:absolute;top:-60px;left:-30px"><font size="4">approximation</font></p>
+							</div>
+						</div>
+						<div class="col  fragment fade-up" style="position:absolute;top:330px;left:800px" data-fragment-index="8">
+							<div class="col  fragment fade-out" data-fragment-index="16">
+							<span style='color:#6699CC'> $\approx p(x_0|\theta)$</span>
+							<p style="position:absolute;top:30px;left:50px">$\downarrow$</p>
+							<p style="position:absolute;top:70px;left:0px">run a MCMC to get </p>
+							<p style='color:#996699;position:absolute;top:180px;left:0px'> $\approx p(\theta|x_0)$</p>
+						</div>
+
+						</div>
+						
+
+					</div>
+					<div class="container">
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:300px; left:50px" data-fragment-index="11">
+							<img data-src="assets/shear_map0.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:270px; left:70px" data-fragment-index="12">
+							<img data-src="assets/shear_map1.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:320px; left:60px" data-fragment-index="13">
+							<img data-src="assets/shear_map2.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:300px; left:30px" data-fragment-index="14">
+							<img data-src="assets/shear_map3.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-up" style="position:absolute;top:280px; left:0px" data-fragment-index="15">
+							<img data-src="assets/shear_map4.png" style="width:280px;"></img>
+						</div>
+
+						<div class="col  fragment fade-up" style="position:absolute;top:400px;left:320px" data-fragment-index="17">
+							
+							<p style='color:#98b0c9'> $\xrightarrow{\hspace*{5cm}}$</p>
+							<p style="position:absolute;top:-50px;left:120px;color:#98b0c9">
+								
+									<font size="4">density approximation</font>
+								
+							</p>
+							<p style="position:absolute;top:-20px;left:138px;color:#98b0c9">
+								
+								<font size="4">via deep learning</font>
+							
+						</p>
+
+						</div>
+						
+						<div class="col  fragment fade-up" style="position:absolute;top:400px;left:800px" data-fragment-index="18">
+							
+							<p style='color:#996699'> $\approx p(\theta|x_0)$</p>
+
+						</div>
+
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:220px; left:150px" data-fragment-index="19">
+							<img data-src="assets/shear_map0.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:220px; left:10px" data-fragment-index="19">
+							<img data-src="assets/shear_map1.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:370px; left:160px" data-fragment-index="19">
+							<img data-src="assets/shear_map2.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:380px; left:130px" data-fragment-index="19">
+							<img data-src="assets/shear_map3.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-up" style="position:absolute;top:400px; left:0px" data-fragment-index="19">
+							<img data-src="assets/shear_map4.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:130px; left:120px" data-fragment-index="19">
+							<img data-src="assets/shear_map0.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:410px; left:270px" data-fragment-index="19">
+							<img data-src="assets/shear_map1.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:80px; left:160px" data-fragment-index="19">
+							<img data-src="assets/shear_map2.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:50px; left:230px" data-fragment-index="19">
+							<img data-src="assets/shear_map3.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-up" style="position:absolute;top:180px; left:30px" data-fragment-index="19">
+							<img data-src="assets/shear_map4.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-up" style="position:absolute;top:50px; left:50px" data-fragment-index="19">
+							<img data-src="assets/shear_map4.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:155px; left:203px" data-fragment-index="19">
+							<img data-src="assets/shear_map0.png" style="width:280px;"></img>
+						</div>
+						<div class="col fragment fade-in-then-semi-out" style="position:absolute;top:200px; left:280px" data-fragment-index="19">
+							<img data-src="assets/shear_map1.png" style="width:280px;"></img>
+						</div>
+
+
+						<p class ='fragment' data-fragment-index="32" style="position:absolute;top:600px; left:0px">
+							$\to$ find a way to reduce the number of simulations
+						</p>
+
+						
+
+					</div>
+					
+		</section>		
+			
+
+
+		<section>
+			<section>
+				<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >The idea</p></h3>
+					<!-- <video data-autoplay src="assets/Simulateur-2.mp4" style="width:1000px;"></video> -->
+					<iframe src="assets/Simulateur-2.mp4" allow="autoplay" width="800px" height="450" frameborder="0"></iframe>
+				</section>
+		
+
+
+			<section>
+
+				<div >
+					<iframe src="assets/score_explanation.mp4"  allow="autoplay" width="800px" height="450" frameborder="0"></iframe>
+					<!-- <video data-autoplay src="assets/score_explanation.mp4" style="width:600px;"></video> -->
+				
+				</div>
+					
+				<br><br>
+				<div>
+					<p class="fragment">$\to$ We integrate the gradients $\nabla_{\theta} \log p(\theta|x)$ in the process to reduce the number of simulations.</p>
+					<p class="fragment">How can we train our neural density estimator with both simulations and score ?</p>
+				</div>
+			</section>
+
+		</section>	
+
+				<section>
+					<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Smooth Normalizing Flows</p></h3>
+					<br>
+						<div class="fragment">
+							$\to$ to be able to learn the distribution with both simulations and gradients
+						</div>
+					<div class="container">
+						<div class="col fragment fade-up" style="position:absolute;top:250px; left:50px" >
+							<img data-src="assets/2moons_truth.png" style="width:260px;"></img>
+
+						</div>
+
+						<div class="col  fragment fade-up" style="position:absolute;top:250px;left:370px" >
+							<img data-src="assets/affineNF.png" style="width:260px;" ></img>
+
+						</div>
+
+						<div class="col  fragment fade-up"  style="position:absolute;top:250px;left:680px" >
+							<img data-src="assets/smoothNF.png" style="width:260px;"></img>
+
+						</div>
+
+					</div>
+					<span class="fragment" style="position:absolute;top:600px;left:680px">  <font size="2">
+						<a href="https://arxiv.org/abs/2110.00351">Smooth Normalizing Flows paper here</a></font>  </span>
+				</section>
+
+				<section>
+					<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Experiment on a toy model: Lotka Volterra</p></h3>
+					<div class="container">
+						<div class="col">
+							<div style="position:relative; width:530px; height:530px; margin:0 auto;">
+							<img class="fragment current-visible" data-src="assets/tight_prior_lotkavolterra_c2st_1.png" style="position:absolute;top:0;left:0;" data-fragment-index="1" />
+							<img class="fragment " data-src="assets/tight_prior_lotkavolterra_c2st_2.png" style="position:absolute;top:0;left:0;" data-fragment-index="2" />
+						</div>
+						</div>
+						<div class="col">
+							<ul>
+							<li class='fragment'>
+							Yes, seems like adding the gradients speeds up the converge of the NPE.
+							</li>
+							<br><br><br>
+							<li class='fragment'>
+								Next step $\to$ apply it to cosmological problems.
+							</li>
+						</ul>
+						</div>
+					</div>
+					<a class = 'fragment' href="https://arxiv.org/abs/2207.05636"><img src="https://img.shields.io/badge/astro--ph.CO-arXiv%3A2201.05561-B31B1B.svg" class="plain" style="height:35px;" /></a> 
+					
+				</section>
+
+			</div>
+		</div>
+		<style>
+
+			/* .reveal .slides {
+			border: 5px solid red;
+			min-height: 100%;
+			width: 128mm;
+			height: 96mm;
+		} */
+
+		</style>
+
+
+<!-- - premier npe method using gradients
+	 - use smooth nf
+	 - confirm results bremer in some situations.... + small prior acceleration
+	 - outil diff simu cosmo denise
+	 -  -->
+
+		<script src="reveal.js/dist/reveal.js"></script>
+		<script src="reveal.js/plugin/notes/notes.js"></script>
+		<script src="reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="reveal.js/plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
