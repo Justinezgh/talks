@@ -19,3 +19,6 @@
 [submodule "in2p3_irfu_workshop/reveal.js"]
 	path = in2p3_irfu_workshop/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "DiipDay2022/reveal.js"]
+	path = DiipDay2022/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
