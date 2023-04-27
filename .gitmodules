@@ -22,3 +22,9 @@
 [submodule "DiipDay2022/reveal.js"]
 	path = DiipDay2022/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "Londres2022/reveal.js"]
+	path = Londres2022/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
+[submodule "CNRSSchool/reveal.js"]
+	path = CNRSSchool/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
