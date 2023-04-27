@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Simulation-Efficient Implicit Inference with Differentiable Simulators"</title>
+
+		<meta name="description" content="Ecole thématique du CNRS
+		Future Cosmology">
+		<meta name="author" content="Justine Zeghal">
+
+		<link rel="stylesheet" href="reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js/dist/theme/darkenergy.css" id="theme">
+		<link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<div class="container">
+					<div class="title" style="border-radius: 20px; background-color:rgba(42, 43, 45, 0.412);">
+					<br>
+					<h2>Simulation-Efficient Implicit Inference with Differentiable Simulators</h2>
+					<center><hr size="100" width="300"></center>
+					<h3><p style="color:#5D6D7E";>Ecole thématique du CNRS - 
+						Future Cosmology</p></h3>
+					<h4><p style="color:#34495E";>April 28, IESC Cargese, France</p></h4>
+						</div>
+					</div>
+					<br>
+					<p>Justine Zeghal, François Lanusse, Alexandre Boucaud, Benjamin Remy, Eric Aubourg</p>
+					<br>
+					<img src=assets/APC.png alt="Drawing" style="width: 110px;"/>
+					<img src=assets/AstroDeep_white.png alt="Drawing" style="width: 180px;"/>
+					<img src=assets/LogoDIIP.png alt="Drawing" style="width: 90px;"/>
+					<img src=assets/AIM.png alt="Drawing" style="width: 110px;"/>
+					<img src=assets/CosmoStat.png alt="Drawing" style="width: 280px;"/>
+				</section>
+
+				<section>
+					<!-- to do pros and cons meme ligne bayes theorme actif + intractable -->
+						<h3 class='slide-title' align="left"><p style="color:#5D6D7E";>Context</p></h3>
+						<br>
+						<p  class='fragment' data-fragment-index="0"> 
+							$ \underbrace{p(\theta|x_0)}_{\text{posterior}}$ $\propto$ $ \underbrace{p(x_0|\theta)}_{\text{likelihood}}$ $ \underbrace{p(\theta)}_{\text{prior}}$
+						</p>
+						<br>
+
+						 <p class="fragment" data-fragment-index="1"> 
+							$\to$ 
+							<span style="color:#FF8F00">
+								<strong>
+									Full Field Inference
+								</strong>
+							</span> 
+						 </p>
+						 <div class='container'>
+
+							<div class='col' style="position:relative;">
+								<p class="fragment" data-fragment-index="2"> 
+									Pros:
+								</p>	
+								<p class="fragment" data-fragment-index="3"> 
+									More than gaussian signal
+								</p>	
+								<br>
+							</div>
+
+							<div class='col' style="position:relative;">
+								<p class="fragment" data-fragment-index="4"> 
+									Cons:
+								</p>	
+								<p class="fragment" data-fragment-index="5"> 
+									Large number of simulations
+								</p>	
+								<p class="fragment" data-fragment-index="6"> 
+									Super slow (if we use MCMCs)
+								</p>	
+							</div>
+
+						</div>
+						<br>
+						<br>
+						<p class="fragment" data-fragment-index="7"> 
+							<span style="color:#FF8F00">
+								<strong>
+							    Our goal: 
+							  </strong>
+								</span>
+								doing Full field Inference with a few number of simulations.
+						</p>	
+
+
+
+				</section>
+
+				<section>
+					<section>
+						<h3 class='slide-title' align="left"><p style="color:#5D6D7E";>
+							<a href= https://github.com/DifferentiableUniverseInitiative/sbi_lens>
+								sbi_lens
+							</a> package to test our inference algorithms
+						</p></h3>
+						<br>
+						<p class="fragment" data-fragment-index="0"> 
+							We developped a
+								<span style="color:#FF8F00">
+									<strong>
+										Differentiable 
+									</strong>
+								</span>
+								Mass Maps LogNormal simulator
+							</p>	
+						<p class="fragment" data-fragment-index="1"> 
+							with 5 tomographic bins
+						</p >	
+						<p class="fragment" data-fragment-index="2"> 
+							which corresponds to LSST Year 10 settings
+						</p>	
+
+					  <image class="fragment" data-src="assets/mass_map_tomo.png" data-fragment-index="3" ></image>
+					</section>
+					<section>
+						<h3 class='slide-title' align="left">
+							Why LogNormal?
+						</h3>
+
+						<br>
+						<div class="container">
+							<ul>
+								<div class = "col">
+								<li class="fragment" data-fragment-index="0"> 
+									Fast to get simulations
+								</li>	
+								<br>
+								<li class="fragment" data-fragment-index="1"> 
+									Realistic enough for our purpose
+								</li>
+								<br>
+								<li class="fragment" data-fragment-index="2"> 
+									More than Non Gaussian signal
+								</li>
+							</div>
+							</ul>
+							
+
+							<div class="col">
+								<image class="fragment" data-src="assets/compare_ff_ps_contour_plot_multi_tomo_bins.png" data-fragment-index="2"></image>
+							</div>
+						</div>
+
+					</section>
+				
+					<section>
+						<h3 class='slide-title' align="left">
+							Implicit Inference
+						</h3>
+						<div class="container">
+							<div class="col">
+								<p class="fragment" data-fragment-index="0"> 
+									With <span style="color:#FF8F00">infinite</span> number of simulations, our SBI contours are as good as the Full Field contours obtained through HMC
+								</p >	
+								<p class="fragment" data-fragment-index="1"> 
+									But now, how can we reduce this number of simulations?
+								</p >	
+								<p class="fragment" data-fragment-index="2"> 
+									$\to$ by using the <span style="color:#FF8F00"> <strong>gradients</strong> $\nabla_{\theta} \log p(\theta|x)$ </span> (also known as the score)
+									from our differentiable simulator
+								</p >	
+							</div>
+
+							<div class="col">
+								<div class="col">
+									<image class="fragment" data-src="assets/compare_contour_plot_multi_tomo_bins.png" data-fragment-index="0"></image>
+								</div>
+							</div>
+
+						</div>
+					</section>
+
+
+			</section>
+
+
+				<section>
+					<h3 class='slide-title' align="left">
+						<p style="color:#5D6D7E" >
+							The idea
+					  </p>
+					</h3>
+					<div class='container'>
+						<div class='col'>
+							<div class="fragment" data-fragment-index="3" style="position:relative; width:400px; height:400px; margin:0 auto;">
+								<video data-autoplay src="assets/score_explanation.mp4" style="width:1000px;height:1000px"></video>
+							</div>
+						</div>
+						<div class='col'>
+							<ul>
+								<p class="fragment" data-fragment-index="3"> 
+									With a few simulations it's hard to approximate the distribution. 
+								 </p>
+								<p class="fragment" data-fragment-index="4"> 
+									$\to$ we need more simulations 
+								</p>
+								<p class="fragment" data-fragment-index="5"> 
+									but if we have a few simulations 
+								</p>
+								<p class="fragment" data-fragment-index="6"> 
+									<span style="color:#FF8F00">
+										<strong>
+											and the gradients
+									  </strong>
+									</span> 
+								</p>
+								<p class="fragment" data-fragment-index="7"> 
+									then it's possible to have an idea of the shape of the distribution. 
+								</p>
+							</ul>
+						</div>
+					</div>
+					<div>
+					</div>
+				</section>
+				<section>
+					<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Experiment on a toy model: Lotka Volterra</p></h3>
+					<div class="container">
+						<div class="col">
+							<div style="position:relative; width:530px; height:530px; margin:0 auto;">
+							<img class="fragment current-visible" data-src="assets/tight_prior_lotkavolterra_c2st_1.png" style="position:absolute;top:0;left:0;" data-fragment-index="1" />
+							<img class="fragment " data-src="assets/tight_prior_lotkavolterra_c2st_2.png" style="position:absolute;top:0;left:0;" data-fragment-index="2" />
+						</div>
+						</div>
+						<div class="col">
+							<ul>
+							<li class='fragment'>
+							Yes! Adding the gradients speeds up the converge.
+							</li>
+							<br><br><br>
+							<li class='fragment'>
+								Next step $\to$ apply it to our cosmological simulator.
+							</li>
+						</ul>
+						</div>
+					</div>
+					<a class = 'fragment' href="https://arxiv.org/abs/2207.05636"><img src="https://img.shields.io/badge/astro--ph.CO-arXiv%3A2201.05561-B31B1B.svg" class="plain" style="height:35px;" /></a> 
+					
+				</section>
+
+			</div>
+		</div>
+		<style>
+
+			/* .reveal .slides {
+			border: 5px solid red;
+			min-height: 100%;
+			width: 128mm;
+			height: 96mm;
+		} */
+
+		</style>
+
+
+<!-- - premier npe method using gradients
+	 - use smooth nf
+	 - confirm results bremer in some situations.... + small prior acceleration
+	 - outil diff simu cosmo denise
+	 -  -->
+
+		<script src="reveal.js/dist/reveal.js"></script>
+		<script src="reveal.js/plugin/notes/notes.js"></script>
+		<script src="reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="reveal.js/plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
