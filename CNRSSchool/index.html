@@ -32,7 +32,7 @@
 						</div>
 					</div>
 					<br>
-					<p>Justine Zeghal, François Lanusse, Alexandre Boucaud, Benjamin Remy, Eric Aubourg</p>
+					<p>Justine Zeghal, François Lanusse, Alexandre Boucaud, Denise Lanzieri</p>
 					<br>
 					<img src=assets/APC.png alt="Drawing" style="width: 110px;"/>
 					<img src=assets/AstroDeep_white.png alt="Drawing" style="width: 180px;"/>
@@ -54,7 +54,7 @@
 							$\to$ 
 							<span style="color:#FF8F00">
 								<strong>
-									Full Field Inference
+									Full-Field Inference
 								</strong>
 							</span> 
 						 </p>
@@ -65,7 +65,7 @@
 									Pros:
 								</p>	
 								<p class="fragment" data-fragment-index="3"> 
-									More than gaussian signal
+									Information beyond Gaussian signal
 								</p>	
 								<br>
 							</div>
@@ -75,10 +75,10 @@
 									Cons:
 								</p>	
 								<p class="fragment" data-fragment-index="5"> 
-									Large number of simulations
+									Need large number of simulations
 								</p>	
 								<p class="fragment" data-fragment-index="6"> 
-									Super slow (if we use MCMCs)
+									Computationnally expensive (HMC)
 								</p>	
 							</div>
 
@@ -91,7 +91,7 @@
 							    Our goal: 
 							  </strong>
 								</span>
-								doing Full field Inference with a few number of simulations.
+								doing Implicit Inference with a minimum number of simulations.
 						</p>	
 
 
@@ -101,10 +101,12 @@
 				<section>
 					<section>
 						<h3 class='slide-title' align="left"><p style="color:#5D6D7E";>
-							<a href= https://github.com/DifferentiableUniverseInitiative/sbi_lens>
+							<!-- <a href= https://github.com/DifferentiableUniverseInitiative/sbi_lens>
 								sbi_lens
-							</a> package to test our inference algorithms
-						</p></h3>
+							</a> package to test our inference algorithms -->
+							Differentiable Mass Maps simulator
+						  </p>
+					  </h3>
 						<br>
 						<p class="fragment" data-fragment-index="0"> 
 							We developped a
@@ -113,9 +115,9 @@
 										Differentiable 
 									</strong>
 								</span>
-								Mass Maps LogNormal simulator
+								LogNormal Mass Maps simulator
 							</p>	
-						<p class="fragment" data-fragment-index="1"> 
+						<p class="fragment" data-fragment-index="0"> 
 							with 5 tomographic bins
 						</p >	
 						<p class="fragment" data-fragment-index="2"> 
@@ -134,22 +136,22 @@
 							<ul>
 								<div class = "col">
 								<li class="fragment" data-fragment-index="0"> 
-									Fast to get simulations
-								</li>	
+									Information beyond Gaussian signal
+								</li>
 								<br>
 								<li class="fragment" data-fragment-index="1"> 
 									Realistic enough for our purpose
 								</li>
 								<br>
 								<li class="fragment" data-fragment-index="2"> 
-									More than Non Gaussian signal
-								</li>
+									Fast
+								</li>	
 							</div>
 							</ul>
 							
 
 							<div class="col">
-								<image class="fragment" data-src="assets/compare_ff_ps_contour_plot_multi_tomo_bins.png" data-fragment-index="2"></image>
+								<image class="fragment" data-src="assets/compare_ff_ps_contour_plot_multi_tomo_bins.png" data-fragment-index="0"></image>
 							</div>
 						</div>
 
@@ -162,7 +164,7 @@
 						<div class="container">
 							<div class="col">
 								<p class="fragment" data-fragment-index="0"> 
-									With <span style="color:#FF8F00">infinite</span> number of simulations, our SBI contours are as good as the Full Field contours obtained through HMC
+									With <span style="color:#FF8F00">infinite</span> number of simulations, our Implicit Inference contours are as good as the Full Field contours obtained through HMC
 								</p >	
 								<p class="fragment" data-fragment-index="1"> 
 									But now, how can we reduce this number of simulations?
@@ -189,44 +191,38 @@
 				<section>
 					<h3 class='slide-title' align="left">
 						<p style="color:#5D6D7E" >
-							The idea
+							Gradient constraining power 
 					  </p>
 					</h3>
 					<div class='container'>
-						<div class='col'>
-							<div class="fragment" data-fragment-index="3" style="position:relative; width:400px; height:400px; margin:0 auto;">
-								<video data-autoplay src="assets/score_explanation.mp4" style="width:1000px;height:1000px"></video>
-							</div>
+					<div class='col'>
+						<div style="position:relative; width:400px; height:400px; margin:0 auto;">
+							<img class="fragment current-visible plain" data-src="assets/gradients_benef_1.png" style="position:absolute;top:0;left:0;width:500px;" data-fragment-index="0" />
+							<img class="fragment current-visible plain" data-src="assets/gradients_benef_2.png" style="position:absolute;top:0;left:0;width:500px;" data-fragment-index="1" />
+							<img class="fragment current-visible plain" data-src="assets/gradients_benef_3.png" style="position:absolute;top:0;left:0;width:500px;" data-fragment-index="2" />
+							<img class="fragment current-visible plain" data-src="assets/gradients_benef_1.png" style="position:absolute;top:0;left:0;width:500px;" data-fragment-index="3" />
+							<img class="fragment current-visible plain" data-src="assets/gradients_benef_4.png" style="position:absolute;top:0;left:0;width:500px;" data-fragment-index="4" />
+							<img class="fragment" data-src="assets/gradients_benef_5.png" style="position:absolute;top:0;left:0;width:500px;" data-fragment-index="5" />
 						</div>
-						<div class='col'>
-							<ul>
-								<p class="fragment" data-fragment-index="3"> 
-									With a few simulations it's hard to approximate the distribution. 
-								 </p>
-								<p class="fragment" data-fragment-index="4"> 
-									$\to$ we need more simulations 
-								</p>
-								<p class="fragment" data-fragment-index="5"> 
-									but if we have a few simulations 
-								</p>
-								<p class="fragment" data-fragment-index="6"> 
-									<span style="color:#FF8F00">
-										<strong>
-											and the gradients
-									  </strong>
-									</span> 
-								</p>
-								<p class="fragment" data-fragment-index="7"> 
-									then it's possible to have an idea of the shape of the distribution. 
-								</p>
-							</ul>
-						</div>
+					</div>
+
+					<div class='col'>
+						<ul>
+							<p class="fragment" data-fragment-index="0"> With a few simulations it's hard to approximate the distribution.  </p>
+							<p class="fragment" data-fragment-index="1"> $\to$ we need more simulations </p>
+							<p class="fragment" data-fragment-index="3"> but if we have a few simulations </p>
+							<p class="fragment" data-fragment-index="4"> <span style="color:#FF8F00"><strong>and the gradients</strong></span> </p>
+							<p class="fragment" data-fragment-index="5"> then it's possible to have an idea of the shape of the distribution. </p>
+						</ul>
+					</div>
+				</div>
+				<div>
 					</div>
 					<div>
 					</div>
 				</section>
 				<section>
-					<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Experiment on a toy model: Lotka Volterra</p></h3>
+					<h3 class='slide-title' align="left"><p style="color:#5D6D7E" >Proof on concept on a toy model: Lotka Volterra</p></h3>
 					<div class="container">
 						<div class="col">
 							<div style="position:relative; width:530px; height:530px; margin:0 auto;">
@@ -241,7 +237,7 @@
 							</li>
 							<br><br><br>
 							<li class='fragment'>
-								Next step $\to$ apply it to our cosmological simulator.
+								Ongoing work $\to$ apply it to our cosmological simulator.
 							</li>
 						</ul>
 						</div>
