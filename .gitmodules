@@ -28,3 +28,6 @@
 [submodule "CNRSSchool/reveal.js"]
 	path = CNRSSchool/reveal.js
 	url = https://github.com/EiffL/reveal.js.git
+[submodule "NewYork2023/reveal.js"]
+	path = NewYork2023/reveal.js
+	url = https://github.com/EiffL/reveal.js.git
